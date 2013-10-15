@@ -17,6 +17,18 @@ transmogrifyCoffee = (debug) ->
       path: './client/js/vendor/jquery/jquery.js'
       exports: '$'
 
+    angular:
+      path: './client/js/vendor/angular/angular.js'
+      exports: 'angular'
+      depends:
+        jquery: '$'
+
+    ngRoute:
+      path: './client/js/vendor/angular-route/angular-route.js'
+      exports: 'ngRoute'
+      depends:
+        angular: 'angular'
+
   bundle = james.read shim(browserify(), libs)
     .transform(coffeeify)
     .require(require.resolve('./client/js/main.coffee'), entry: true)
